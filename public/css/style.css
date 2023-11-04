@@ -1,0 +1,142 @@
+
+
+@media screen and (max-width: 768px) {
+    .nav-menu {
+       display: none;
+       flex-direction: column;
+    }
+    .navbar-toggle{
+        display: flex !important;
+    }
+
+
+}
+@media screen and (max-width: 991px){
+    .mr-inter{
+        display: none !important;
+    }
+    .ms-inter{
+        display: block !important;
+    }
+}
+
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+.register-body{
+    min-height:100vh;
+}
+.thingy{
+    background-color: #E40066;
+    font-family :'Times New Roman', Times, serif;
+    color: #AEDEFC;
+    padding: 14px 0px;
+
+
+}
+
+.reg-body{
+    min-height : 100vh;
+    position: relative;
+
+}
+
+.offcanvas-header{
+    background-color: #E40066;
+}
+.offcanvas-title
+{
+    color: #AEDEFC;
+}
+.offcan-btn{
+    width: 100%;
+    background-color: #FFC107;
+    color: black;
+    border-radius: 10px;
+    padding: 10px 0px;
+    font-size:large;
+    border: none;
+}
+.offcanvas-footer{
+    font-size: small;
+}
+.cola-image{
+    object-fit: contain;
+}
+.employer-tag{
+    background-color: #FFDFDF;
+}
+.employer-title{
+    font-weight: 400;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.ms-inter{
+    margin-top: 10px;
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.circular-button {
+        width: 100px; /* Adjust the width and height as needed */
+        height: 100px;
+        border-radius: 50%;
+        background-color: #FFDFDF; /* Change the background color as needed */
+        color: #5D12D2; /* Change the text color as needed */
+        text-align: center;
+        line-height: 100px; /* Center text vertically */
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px; /* Change the font size as needed */
+        transition: transform 0.3s;
+        cursor: pointer;
+  }
+  .circular-button:hover{
+    border: 1px solid black;
+    transform: translateY(-10px);
+
+  }
+.industry-title{
+    white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 120px;
+
+}
+.footer
+{
+    background-color: #E40066;
+}
+.foot-title{
+    color: #AEDEFC !important;
+    font-family: 'Times New Roman', Times, serif;
+
+
+}
+select.companyStatus-red{
+    background-color: #DC3545;
+    color: #ffffff;
+}
+
+select.companyStatus-red option:checked{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+select.companyStatus-blue{
+    background-color: #0074D9;
+    color: #ffffff;
+}
+
+select.companyStatus-blue option:checked{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+
