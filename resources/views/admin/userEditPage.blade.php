@@ -100,7 +100,7 @@
                 "role" : $role,
              },
              success:function(response){
-                console.log("Success");
+                window.location.href="/admin/user/page";
              }
            })
         })

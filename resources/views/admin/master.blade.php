@@ -223,6 +223,15 @@
 
           </li>
           <li class="nav-item">
+            <a href="{{route("admin#adminList")}}" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>
+                Admins
+
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{route("admin#userPage")}}" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
@@ -244,35 +253,23 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="nav-icon fa-solid fa-gears"></i>
               <p>
-                Charts
+               Setting
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                <a href="{{route("admins.show",Auth::user()->id)}}" class="nav-link">
+                  <i class="fa-solid fa-user-pen nav-icon"></i>
+                  <p>Account</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inline</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>uPlot</p>
+                <a href="{{route("admin#changePasswordPage")}}" class="nav-link">
+                  <i class="fa-solid fa-key nav-icon"></i>
+                  <p>Security</p>
                 </a>
               </li>
             </ul>

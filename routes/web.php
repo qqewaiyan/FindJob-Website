@@ -32,6 +32,9 @@ Route::middleware(["admin_auth"])->group(function(){
         Route::prefix("admin")->group(function(){
         Route::resource("admins",AdminController::class);
 
+        Route::get("admin/list",[AdminController::class,"adminList"])->name("admin#adminList");
+        Route::get("changePasswordPage",[AdminController::class,"changePasswordPage"])->name("admin#changePasswordPage");
+
         //user
 
         Route::get("user/page",[AdminController::class,"userPage"])->name("admin#userPage");

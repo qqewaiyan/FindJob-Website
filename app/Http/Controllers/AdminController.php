@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -38,6 +40,9 @@ class AdminController extends Controller
     public function show(string $id)
     {
         //
+
+        $admin = User::where("id",$id)->first();
+        return view("admin.AccountDetail", compact("admin"));
     }
 
     /**
@@ -46,6 +51,8 @@ class AdminController extends Controller
     public function edit(string $id)
     {
         //
+        $admin = User::where("id",$id)->first();
+        return view("admin.adminEditPage", compact("admin"));
     }
 
     /**
@@ -54,6 +61,25 @@ class AdminController extends Controller
     public function update(Request $request, string $id)
     {
         //
+
+       $this->validationCheck($request);
+       $data = $this->getUserData($request);
+
+       if(request()->hasFile("image")){
+        $dbImage = User::where("id",$id)->first();
+        $dbImage = $dbImage->image;
+        if($dbImage != null){
+            Storage::delete("public/".$dbImage);
+        }
+
+        $imageName = uniqid().$request->file("image")->getClientOriginalName();
+        $request->file("image")->storeAs("public", $imageName);
+        $data["image"] = $imageName;
+       }
+
+        User::where("id",$id)->update($data);
+
+        return redirect()->route("admins.show",$id)->with("success","Account Updated Successfully");
     }
 
     /**
@@ -63,6 +89,22 @@ class AdminController extends Controller
     {
         //
     }
+    //admin list
+
+    public function adminList(){
+        $admin = User::where("role","admin")->get();
+        return view("admin.adminPage", compact("admin"));
+    }
+
+    //admin change password page
+
+    public function changePasswordPage(){
+        return view("admin.changePasswordPage");
+    }
+
+
+    //user
+
 
     //user page
     public function userPage(){
@@ -95,13 +137,23 @@ class AdminController extends Controller
     }
 
 
+
+
+
     //company
+
 
     public function companyPage(){
         $company = User::where("role","company")->get();
         return view("admin.company",compact("company"));
     }
 
+    //company edit
+
+    public function companyEdit($id){
+        $company = User::where("id",$id)->first();
+        return view("admin.companyEditPage",compact("company"));
+    }
     //company status change
 
     public function companyStatusChange(Request $request){
@@ -118,9 +170,40 @@ class AdminController extends Controller
     public function companyStatusSearch(Request $request){
 
 
-        $company = User::where("status",$request->companyStatus)
+        if($request->companyStatus == null){
+            $company = User::where("role","company")->get();
+        }
+        else{
+            $company = User::where("status",$request->companyStatus)
                         ->where("role","company")->get();
-        
+        }
+
         return view("admin.company",compact("company"));
+    }
+
+    //validation check
+
+    private function validationCheck($request){
+        Validator::make($request->all(), [
+            'name' => 'required|min:4|max:20|string',
+            'email' => 'required|email',
+            'phone' => 'required|min:9|max:15',
+            'address' => 'required|min:2',
+            'image' => 'file|mimes:png,jpg,jpeg,webp',
+        ])->validate();
+    }
+
+
+
+    //get user data
+
+    private function getUserData($request){
+        return [
+            "name" => $request->name,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "address" => $request->address,
+            "gender" => $request->gender,
+        ];
     }
 }

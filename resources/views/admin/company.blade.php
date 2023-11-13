@@ -8,7 +8,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('admin#companyPage') }}">User Page</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin#companyPage') }}">Company Page</a></li>
                         <li class="breadcrumb-item active">Find Job</li>
                     </ol>
                 </div><!-- /.col -->
@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-6 col-sm-5 col-5">
-                    <div class="h4">User Total -> {{ count($company) }} </div>
+                    <div class="h4">Company Total -> {{ count($company) }} </div>
                 </div>
                 <div class="col-xxl-7 col-xl-7 col-lg-6 col-md-6 col-sm-12 col-12">
                     <form action="{{ route('admin#companyPage') }}" method="GET">
