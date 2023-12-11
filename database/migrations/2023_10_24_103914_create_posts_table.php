@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("job_description");
             $table->string("job_requirement");
             $table->string("job_detail");
+            $table->string("job_location");
             $table->integer("job_status")->default(0);
             $table->string("valid_canditate")->nullable();
             $table->string("job_offer")->nullable();

@@ -16,6 +16,7 @@ class Post extends Model
         "job_status",
         "job_description",
         "job_detail",
+        "job_location",
         "job_requirement",
         "valid_canditate",
         "job_offer",

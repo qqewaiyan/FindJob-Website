@@ -1,8 +1,12 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use Laravel\Fortify\Fortify;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use App\Actions\Fortify\UpdateUserPassword;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
+
 Route::middleware(['guest'])->group(function () {
     Route::get('/', function () {
         return view('start.home');
@@ -27,6 +33,7 @@ Route::get("register/company",[AuthController::class,"registerCompany"])->name("
 
 Route::get('/dashboard',[AuthController::class,"dashboard"])->name('auth#dashboard');
 
+//admin routes
 
 Route::middleware(["admin_auth"])->group(function(){
         Route::prefix("admin")->group(function(){
@@ -34,7 +41,7 @@ Route::middleware(["admin_auth"])->group(function(){
 
         Route::get("admin/list",[AdminController::class,"adminList"])->name("admin#adminList");
         Route::get("changePasswordPage",[AdminController::class,"changePasswordPage"])->name("admin#changePasswordPage");
-
+        Route::post("update/password,{id}",[AdminController::class,"updatePassword"])->name("admin#updatePassword");
         //user
 
         Route::get("user/page",[AdminController::class,"userPage"])->name("admin#userPage");
@@ -52,4 +59,15 @@ Route::middleware(["admin_auth"])->group(function(){
 
     });
 
+});
+
+//user routes
+
+Route::middleware(["user_auth"])->group(function(){
+    Route::prefix("user")->group(function(){
+        Route::resource("users",UserController::class);
+
+    
+
+    });
 });

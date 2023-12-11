@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\UserJobHuntStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -12,6 +15,8 @@ class UserController extends Controller
     public function index()
     {
         //
+
+        return view("User.homePage");
     }
 
     /**
@@ -20,6 +25,7 @@ class UserController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -36,6 +42,11 @@ class UserController extends Controller
     public function show(string $id)
     {
         //
+        $user = User::where("id",$id)->first();
+        $userStatus = UserJobHuntStatus::where("user_id",$id)->first();
+        
+
+        return view("User.profilePage",compact("user","userStatus"));
     }
 
     /**

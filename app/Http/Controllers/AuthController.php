@@ -23,10 +23,10 @@ class AuthController extends Controller
     //after login or register
     public function dashboard(){
         if(Auth::user()->role == "admin"){
-            return view("Admin.homePage");
+            return redirect()->route("admins.index");
         }
         if(Auth::user()->role == "user"){
-            return view("User.homePage");
+           return redirect()->route("users.index");
         }
         if(Auth::user()->role == "company"){
             return view("company.homePage");

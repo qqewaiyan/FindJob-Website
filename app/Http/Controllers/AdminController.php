@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -101,6 +102,35 @@ class AdminController extends Controller
     public function changePasswordPage(){
         return view("admin.changePasswordPage");
     }
+    //admin update password
+
+    public function updatePassword(Request $request,$id){
+       
+      
+       $this->passwordValidationCheck($request);
+       $dbPassword = User::where("id",$id)->first();
+       $dbPassword = $dbPassword->password;
+       
+      if(Hash::check($request->currentPassword,$dbPassword)){
+        $updatePassword = [
+            "password" => Hash::make($request->newPassword)
+        ];
+        User::where("id",$id)->update($updatePassword);
+
+        return redirect()->route("admin#changePasswordPage")->with(["Match" => "Password Changed Successfully"]);
+      }
+
+      else{
+        return  redirect()->route("admin#changePasswordPage")->with(["notMatch" => "Fail To Change The Password"]);
+      }
+      
+    }
+
+
+
+
+
+
 
 
     //user
@@ -205,5 +235,20 @@ class AdminController extends Controller
             "address" => $request->address,
             "gender" => $request->gender,
         ];
+    }
+   
+
+
+    //validation check for password
+
+    private function passwordValidationCheck($request){
+
+       
+
+        Validator::make($request->all(),[
+            "currentPassword" => "required |min:6",
+            "newPassword" => "required |min:6 |different:currentPassword",
+            "password_confirmation" => "required | min:6 |same :newPassword"
+        ])->validate();
     }
 }

@@ -1,6 +1,9 @@
+:root{
+    --blue-color : #17a2b8;
 
+}
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
     .nav-menu {
        display: none;
        flex-direction: column;
@@ -11,7 +14,7 @@
 
 
 }
-@media screen and (max-width: 991px){
+@media screen and (max-width: 992px){
     .mr-inter{
         display: none !important;
     }
@@ -29,7 +32,7 @@
     min-height:100vh;
 }
 .thingy{
-    background-color: #E40066;
+    background-color: var(--blue-color);
     font-family :'Times New Roman', Times, serif;
     color: #AEDEFC;
     padding: 14px 0px;
@@ -44,7 +47,7 @@
 }
 
 .offcanvas-header{
-    background-color: #E40066;
+    background-color: var(--blue-color);
 }
 .offcanvas-title
 {
@@ -61,6 +64,7 @@
 }
 .offcanvas-footer{
     font-size: small;
+    background-color:  var(--blue-color);
 }
 .cola-image{
     object-fit: contain;
@@ -110,7 +114,7 @@
 }
 .footer
 {
-    background-color: #E40066;
+    background-color: var(--blue-color);
 }
 .foot-title{
     color: #AEDEFC !important;
@@ -141,8 +145,22 @@ select.companyStatus-blue option:checked{
     display: inline-block;
     background-color: #E0F4FF;
     color: #39A7FF;
-    border-radius: 50%;
+    border-radius: 60%;
     padding: 10px;
 }
-
-
+.passwordInput{
+    position: relative;
+}
+.iconForInput{
+    position: absolute;
+    top: 25%;
+    right: 13px;
+    font-size: large;
+}
+.jobStatus-icon{
+    display: inline-block;
+        background-color: #e6eff4;
+        color: var(--blue-color);
+        border-radius: 50%;
+        padding: 14px;
+}
