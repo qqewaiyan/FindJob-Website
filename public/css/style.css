@@ -112,12 +112,15 @@
             max-width: 120px;
 
 }
-.footer
+.footer-border
 {
-    background-color: var(--blue-color);
+    
+    
+    border-top: 1px solid #dcdcdc;
+   
 }
 .foot-title{
-    color: #AEDEFC !important;
+    color: black !important;
     font-family: 'Times New Roman', Times, serif;
 
 

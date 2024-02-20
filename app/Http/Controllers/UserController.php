@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserJobHuntStatus;
+use App\Models\UserWorkExperience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,11 +43,12 @@ class UserController extends Controller
     public function show(string $id)
     {
         //
-        $user = User::where("id",$id)->first();
-        $userStatus = UserJobHuntStatus::where("user_id",$id)->first();
-        
+        $user = User::where("users.id",$id)->first();
 
-        return view("User.profilePage",compact("user","userStatus"));
+        $userStatus = UserJobHuntStatus::where("user_id",$id)->first();
+        $userWorkExperience = UserWorkExperience::where("user_id",$id)->get();
+       
+        return view("User.profilePage",compact("user","userStatus","userWorkExperience"));
     }
 
     /**

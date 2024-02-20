@@ -16,4 +16,9 @@ class UserWorkExperience extends Model
         "start_date",
         "end_date",
     ];
+
+    protected $dates = [
+        'start_date',
+        'end_date',
+    ];
 }

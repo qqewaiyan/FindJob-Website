@@ -186,22 +186,23 @@
 
 
     @yield("content")
+        <div class="footer-border"></div>
         <div class="container-fluid footer">
             <div class="row py-3">
 
                     <div class="ms-3 col-xxl-3 col-xl-3 col-lg-3 col-md-4 text-center col-sm-4 col-12 foot-title h4 text-uppercasemy-1">
                         Find Job.com
                     </div>
-                    <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-7 col-sm-7 col-12 text-center text-white my-1">
-                        <p>&copy; <span id="copyright-year">2023</span> Your Company Name. All rights reserved.</p>
+                    <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-7 col-sm-7 col-12 text-center  my-1">
+                        <p class="fw-bold">&copy; <span id="copyright-year">2023</span> Find Job.com . All rights reserved.</p>
                     <p> Privacy Policy | Terms & Conditions</p>
                     </div>
                     <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12 text-center my-1">
-                        <h4 class="text-white">Contact us</h4>
+                        <h4 class="">Contact us</h4>
                         <div class="d-flex justify-content-center">
                             <ul class="d-flex justify-content-around align-items-center list-unstyled">
-                                <li class="mx-3 fs-2"><a href="" class="text-white"><i class="fa-brands fa-facebook"></i></a></li>
-                                <li class="mx-3 fs-2"><a href="" class="text-white" ><i class="fa-brands fa-linkedin"></i></a></li>
+                                <li class="mx-3 fs-2"><a href="" class=""><i class="fa-brands fa-facebook"></i></a></li>
+                                <li class="mx-3 fs-2"><a href="" class="" ><i class="fa-brands fa-linkedin"></i></a></li>
                             </ul>
                         </div>
                     </div>
